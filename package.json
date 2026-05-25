@@ -1,0 +1,32 @@
+{
+  "name": "diting-okr",
+  "version": "1.0.0",
+  "description": "谛听 (Diting) - OKR & MTL 可视化大屏与智能体 CLI 写入工具",
+  "type": "module",
+  "main": "server/index.js",
+  "bin": {
+    "diting": "./cli.js"
+  },
+  "scripts": {
+    "dev:frontend": "vite",
+    "dev:backend": "node server/index.js",
+    "dev": "npm run dev:backend & npm run dev:frontend",
+    "build": "vite build",
+    "preview": "vite preview",
+    "seed": "node db/seed.js",
+    "db:init": "node -e \"import fs from 'fs'; import { execSync } from 'child_process'; if (!fs.existsSync('db')) fs.mkdirSync('db'); execSync('node db/seed.js');\""
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "lucide-react": "^0.395.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "recharts": "^2.12.7",
+    "vite": "^5.3.1"
+  }
+}

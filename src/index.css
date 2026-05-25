@@ -1,0 +1,386 @@
+/* ==========================================================================
+   谛听 (Diting) - OKR & MTL 极致毛玻璃设计系统全局样式表
+   ========================================================================== */
+
+:root {
+  --bg-gradient: linear-gradient(135deg, #070913 0%, #0e122b 40%, #1c0e35 75%, #070913 100%);
+  
+  /* 品牌核心色板 */
+  --primary-gold: #fbbf24;      /* 战略级目标 / 琥珀金 */
+  --primary-gold-rgb: 251, 191, 36;
+  --process-cyan: #06b6d4;      /* 过程指标 / 科技青 */
+  --process-cyan-rgb: 6, 182, 212;
+  --stage-prospective: #38bdf8; /* 意向阶段 / 天空蓝 */
+  --stage-opportunity: #a855f7; /* 商机阶段 / 霓虹紫 */
+  --stage-bidding: #f43f5e;     /* 签约招标 / 玫瑰红 */
+  --stage-collection: #10b981;  /* 回款结案 / 翡翠绿 */
+  
+  /* 毛玻璃卡片系统 */
+  --glass-bg: rgba(13, 17, 39, 0.5);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: rgba(0, 0, 0, 0.3);
+  --font-title: 'Outfit', 'Inter', -apple-system, sans-serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-gradient);
+  background-size: 400% 400%;
+  animation: gradientBG 25s ease infinite;
+  color: #f1f5f9;
+  font-family: var(--font-body);
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding-bottom: 2rem;
+  letter-spacing: -0.01em;
+}
+
+/* 渐变背景流动动画 */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 滚动条极致美化 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.3);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ==========================================================================
+   毛玻璃卡片 (Glassmorphism Cards)
+   ========================================================================== */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 var(--glass-shadow);
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45);
+}
+
+/* 霓虹微光边框 */
+.glow-card-gold::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+}
+.glow-card-cyan::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--process-cyan), transparent);
+}
+
+.glow-card-bidding::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--stage-bidding), transparent);
+}
+
+.glow-card-collection::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--stage-collection), transparent);
+}
+
+/* ==========================================================================
+   布局网格 (Dashboard Layout)
+   ========================================================================== */
+.dashboard-container {
+  max-width: 1680px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.header-title-box h1 {
+  font-family: var(--font-title);
+  font-size: 2.2rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #ffffff 0%, #cbd5e1 50%, #facc15 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.header-slogan {
+  font-size: 0.9rem;
+  color: rgba(251, 191, 36, 0.8);
+  font-weight: 500;
+  text-shadow: 0 0 12px rgba(251, 191, 36, 0.35);
+  margin-top: 0.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* 按钮微动效与玻璃效果 */
+.glass-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.25s ease;
+}
+
+.glass-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.glass-btn.active {
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.2) 0%, rgba(251, 191, 36, 0.05) 100%);
+  border-color: rgba(251, 191, 36, 0.5);
+  color: var(--primary-gold);
+  text-shadow: 0 0 8px rgba(251, 191, 36, 0.2);
+}
+
+/* 大屏网格 */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.25rem;
+}
+
+/* ==========================================================================
+   项目看板 (Project Kanban Columns)
+   ========================================================================== */
+.kanban-columns {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.kanban-column {
+  background: rgba(15, 23, 42, 0.2);
+  border-radius: 12px;
+  padding: 0.75rem;
+  min-height: 480px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.kanban-column-header {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-card {
+  background: rgba(24, 30, 62, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 0.85rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card:hover {
+  background: rgba(24, 30, 62, 0.65);
+  border-color: rgba(255, 255, 255, 0.12);
+  transform: translateX(2px);
+}
+
+.project-card-amount {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0.4rem 0;
+}
+
+.project-badge {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.badge-normal {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+}
+.badge-stagnant {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+}
+.badge-risk {
+  background: rgba(244, 63, 94, 0.15);
+  color: #fb7185;
+}
+
+/* ==========================================================================
+   龙虎榜 (Performance Leaderboard)
+   ========================================================================== */
+.leaderboard-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  max-height: 480px;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+
+.leaderboard-item {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.leaderboard-item:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateX(4px);
+}
+
+.rank-badge {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.75rem;
+  font-size: 0.75rem;
+}
+
+.rank-1 { background: linear-gradient(135deg, #fbbf24, #d97706); color: #000000; box-shadow: 0 0 10px rgba(251, 191, 36, 0.5); }
+.rank-2 { background: linear-gradient(135deg, #cbd5e1, #64748b); color: #000000; }
+.rank-3 { background: linear-gradient(135deg, #d97706, #78350f); color: #ffffff; }
+
+/* ==========================================================================
+   动画与视觉辅助 (Animations & Helpers)
+   ========================================================================== */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-in {
+  animation: slideIn 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+.font-outfit {
+  font-family: 'Outfit', sans-serif;
+}
+
+/* 呼吸灯发光点 */
+.neon-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+}
+
+.neon-dot::after {
+  content: '';
+  position: absolute;
+  top: -4px; left: -4px; right: -4px; bottom: -4px;
+  border-radius: 50%;
+  background: inherit;
+  opacity: 0.45;
+  animation: neonPulse 2s infinite ease-in-out;
+}
+
+@keyframes neonPulse {
+  0% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 0.5; }
+}
+
+/* 下钻弹窗毛玻璃蒙层 */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(7, 9, 21, 0.65);
+  backdrop-filter: blur(12px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.modal-content {
+  background: rgba(13, 17, 39, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 960px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  padding: 2rem;
+  animation: modalZoom 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes modalZoom {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
