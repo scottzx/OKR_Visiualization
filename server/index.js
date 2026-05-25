@@ -31,7 +31,7 @@ const handleDbError = (res, err) => {
 };
 
 // 1. 获取所有部门
-app.get('/api/departments', (res, req) => {
+app.get('/api/departments', (req, res) => {
   try {
     const stmt = db.prepare('SELECT id, name, target FROM departments ORDER BY id');
     const rows = stmt.all();
@@ -227,7 +227,7 @@ app.get('/api/projects', (req, res) => {
     const { stage } = req.query;
 
     let projectSql = `
-      SELECT p.id, p.name, p.amount, p.stage, p.status, p.last_updated, 
+      SELECT p.id, p.name, p.amount, p.stage, p.status, p.last_updated, p.employee_id,
              e.name AS employee_name, d.name AS department_name
       FROM projects p
       JOIN employees e ON p.employee_id = e.id

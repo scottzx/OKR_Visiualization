@@ -392,6 +392,8 @@ export default function App() {
                   />
                   <Tooltip 
                     contentStyle={{ background: 'rgba(13, 17, 39, 0.9)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', color: '#f1f5f9' }}
+                    labelStyle={{ color: '#ffffff' }}
+                    itemStyle={{ color: '#ffffff' }}
                     labelFormatter={(label) => `日期: ${label}`}
                     formatter={(val) => [`¥${(Number(val)/10000).toFixed(0)}万`, '']}
                   />
@@ -422,6 +424,8 @@ export default function App() {
                   />
                   <Tooltip 
                     contentStyle={{ background: 'rgba(13, 17, 39, 0.9)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', color: '#f1f5f9' }}
+                    labelStyle={{ color: '#ffffff' }}
+                    itemStyle={{ color: '#ffffff' }}
                     formatter={(value) => [value, '数量/次数']}
                   />
                   <Bar dataKey="count" radius={[0, 6, 6, 0]} barSize={18}>
